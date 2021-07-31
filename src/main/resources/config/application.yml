@@ -1,0 +1,21 @@
+spring:
+    thymeleaf:
+        prefix: file:src/main/resources/templates/
+        cache: false
+
+    jpa:
+        database: POSTGRESQL
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+
+
+    datasource:
+        url: jdbc:postgresql://localhost:5432/learn-spring
+        username: postgres
+        password: 1
+
+server:
+    port: 8080
+
+
