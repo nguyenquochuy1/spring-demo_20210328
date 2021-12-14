@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>my-vue-app</title>
+  <link href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-32x32.png" rel="icon" sizes="32x32"
+        type="image/png">
+  <link href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-16x16.png" rel="icon" sizes="16x16"
+        type="image/png">
+  <!--[if IE]>
+  <link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
+  <!-- Add to home screen for Android and modern mobile browsers -->
+  <link href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json" rel="manifest">
+  <meta content="#4DBA87" name="theme-color">
+
+  <!-- Add to home screen for Safari on iOS -->
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="my-vue-app" name="apple-mobile-web-app-title">
+  <link href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/apple-touch-icon-152x152.png"
+        rel="apple-touch-icon">
+  <link color="#4DBA87" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/safari-pinned-tab.svg"
+        rel="mask-icon">
+  <!-- Add to home screen for Windows -->
+  <meta content="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/msapplication-icon-144x144.png"
+        name="msapplication-TileImage">
+  <meta content="#000000" name="msapplication-TileColor">
+  <% for (var chunk of webpack.chunks) {
+  for (var file of chunk.files) {
+  if (file.match(/\.(js|css)$/)) { %>
+  <link as="<%= file.match(/\.css$/)?'style':'script' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>"
+        rel="<%= chunk.initial?'preload':'prefetch' %>">
+  <% }}} %>
+</head>
+<body>
+<noscript>
+  This is your fallback content in case JavaScript fails to load.
+</noscript>
+<div id="app"></div>
+<!-- Todo: only include in production -->
+<%= htmlWebpackPlugin.options.serviceWorkerLoader %>
+<!-- built files will be auto injected -->
+</body>
+</html>
