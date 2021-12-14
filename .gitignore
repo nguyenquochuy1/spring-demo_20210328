@@ -38,3 +38,4 @@ out/
 
 ### Node Modules ###
 node_modules/
+my-vue-app/node_modules
