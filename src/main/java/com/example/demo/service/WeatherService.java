@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WeatherService {
@@ -17,4 +18,6 @@ public class WeatherService {
     public List<Weather> findAllWeatherData() {
         return weatherRepository.sellectAll();
     }
+
+
 }

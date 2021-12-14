@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Danh sach san pham</h1>
+<table>
+    <tr th:each="data : ${allProduct}" th:object="${data}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{name}"></td>
+        <td th:text="*{brand}"></td>
+        <td th:text="*{madeIn}"></td>
+        <td th:text="*{price}"></td>
+    </tr>
+</table>
+</body>
+</html>
