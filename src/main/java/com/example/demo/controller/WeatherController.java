@@ -27,6 +27,6 @@ public class WeatherController {
         model.addAttribute("weatherDataList", weatherDataList);
 //        List<Map<String, Object>> list = jdbcTemplate.queryForList("select  * from weather");
 //        model.addAttribute("weatherDataList", list);
-        return "weather";
+        return "weather ";
     }
 }
