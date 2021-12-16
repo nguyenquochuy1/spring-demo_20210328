@@ -14,7 +14,6 @@ spring:
         show-sql: true
 
 
-
     datasource:
         url: jdbc:postgresql://localhost:5432/learn-spring
         username: postgres
@@ -23,6 +22,8 @@ spring:
         hikari:
             max-lifetime: 600000
             maximum-pool-size: 2
+    main:
+        web-application-type: none
 
 server:
     port: 8001
