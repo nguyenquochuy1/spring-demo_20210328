@@ -8,15 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.jdbc.core.JdbcTemplate;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequiredArgsConstructor
 public class WeatherController {
 
-    @Autowired
-    WeatherService weatherService;
+    private final WeatherService weatherService;
     @Autowired
     JdbcTemplate jdbcTemplate;
 

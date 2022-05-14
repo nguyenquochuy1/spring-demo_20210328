@@ -1,45 +1,48 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Student;
+import com.example.demo.service.StudentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class StudentController {
-    @Autowired
-    ServletContext servletContext;
 
-    @GetMapping("/student")
-    public String index(HttpServletRequest request, HttpSession session, ModelMap modelMap) {
+    private final ServletContext servletContext;
+    private final StudentService studentService;
 
-//        session.setAttribute("name","Nguyen Quoc Huy");
-//        session.setAttribute("level","2");
-//
-//        request.setAttribute("name","Nguyen Van B");
-//        request.setAttribute("level","4");
-//
-//        session.setAttribute("salary",1000);
-//        request.setAttribute("photo","images/");
-//
-//        List<String> list = new ArrayList<>();
-//        list.add("Nguyen Van A");
-//        list.add("Nguyen Van C");
-//
-//        modelMap.addAttribute("list",list);
+    @GetMapping("/input-student")
 
-        Student student = new Student("1", 10.0, "IT");
-        System.out.println(request.getQueryString());
-        modelMap.addAttribute("student", student);
+    public String inputStudent(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap) {
+        System.out.println(request.getContextPath());
+        System.out.println(session);
+        System.out.println(modelMap);
+        return "InputStudent";
+    }
 
+    @GetMapping("/students")
+    public String index(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap) {
+        List<Student> students = studentService.allStudent();
+        modelMap.addAttribute("students", students);
         return "student";
+    }
+
+    @PostMapping("/submit-students")
+    @ResponseBody
+    public Student index2(@RequestBody Student student) {
+        return studentService.createStudent(student);
     }
 }
