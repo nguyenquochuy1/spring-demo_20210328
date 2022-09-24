@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.entity.Tutorial;
 import com.example.demo.repository.TutorialRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +14,10 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class TutorialController {
-    @Autowired
-    TutorialRepository tutorialRepository;
+
+    private final TutorialRepository tutorialRepository;
 
     @GetMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {

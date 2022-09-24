@@ -1,6 +1,5 @@
 package com.example.demo.database;
 
-import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepository;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

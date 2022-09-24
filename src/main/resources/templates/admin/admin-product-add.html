@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/assets/css/admin.css">
+</head>
+<body>
+<main class="container">
+    <header class="row text-center">
+
+    </header>
+    <section class="row">
+        <div class="col offset-3 mt-4">
+            <form action="" method="post">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Add New Product</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="categoryId">Product ID:</label>
+                            <input type="text"
+                                   class="form-control" name="categoryId" id="categoryId" aria-describedby="helpId"
+                                   placeholder="Category ID">
+                            <small id="categoryIdHid" class="form-text text-muted">Category id is required.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text"
+                                   class="form-control" name="name" id="name" aria-describedby="helpId"
+                                   placeholder="Category Name">
+                            <small id="nameHid" class="form-text text-muted">Name is required.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="text"
+                                   class="form-control" name="quantity" id="quantity" aria-describedby="helpId"
+                                   placeholder="Category Name">
+                            <small id="quantityHid" class="form-text text-muted">Quantity is required.</small>
+                        </div>
+                        <div class="input-group form-group">
+                            <span class="input-group-text">Unit Price</span>
+                            <input type="number" name="unitPrice" id="unitPrice" class="form-control" placeholder="Unit Price">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <div class="input-group form-group">
+                            <span class="input-group-text">Discount</span>
+                            <input type="number" name="unitPrice" id="discount" class="form-control" placeholder="Discount">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoryId">Category</label>
+                        <select class="custom-select" name="status" id="status">
+                            <option value="-" selected>Out of Stock</option>
+                            <option value="1">On Sale</option>
+                            <option value="2">Featured</option>
+                            <option value="3">BestSeller</option>
+                            <option value="4">Out of Order</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for=""></label>
+                        <input type="text" name="" id="" class="form-control" placeholder=""
+                               aria-describedby="helpId">
+                        <small id="helpId" class="text-muted">Help text</small>
+                    </div>
+
+                    <div class="card-footer text-muted">
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                        <button class="btn btn-primary">List Categories</button>
+                        <button class="btn btn-secondary">Save</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer class="row"></footer>
+</main>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<script>
+    $('#demo').on('change',function () {
+        $.ajax({
+            type: 'POST',
+            url: 'demo',
+            data: "hello",
+            dataType: 'text',
+            // beforeSend: function(){
+            //     $(".ajaxLoader").hide();
+            // },
+            success: function (res) {
+                console.log(res);
+                // $("#filteredProducts_b").html(res.data);
+                // $(".ajaxLoader").hide();
+            }
+        })
+    })
+    // $('#unitPrice').bind('mousewheel', function(e){
+    //     console.log("123");
+    //     if(e.originalEvent.wheelDelta /120 > 0) {
+    //         console.log('scrolling up !');
+    //     }
+    //     else if (e.delegateTarget.value < 0){
+    //         // e.preventDefault();
+    //         e.delegateTarget.value = 0;
+    //     }
+    // });
+</script>
+
+</body>
+</html>

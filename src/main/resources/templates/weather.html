@@ -9,32 +9,74 @@
     <!-- Bootstrap CSS -->
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            crossorigin="anonymous"></script>
+
 </head>
+
 <body>
+
 <p>
     <span th:text="${hello}">Hello World!</span>
 </p>
+<button id="getApi" type="button" class="btn btn-primary" onclick="">Click Me!!!</button>
 <table>
-    <h1 class="title">Weather Forecast</h1>
+    <h1 id="hello" class="title">Weather Forecast</h1>
     <tr th:each="data : ${weatherDataList}" th:object="${data}">
         <td th:text="*{id}"></td>
-        <td th:text="*{location_id}"></td>
+        <!--        <td th:text="*{location_id}"></td>-->
         <td th:text="*{name}"></td>
         <td th:text="*{temperature}"></td>
         <td th:text="*{humidity}"></td>
-        <td th:text="*{date_time}"></td>
+        <!--        <td th:text="*{date_time}"></td>-->
     </tr>
 </table>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script crossorigin="anonymous"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script th:inline="javascript">
+    let message = /*[[${weatherDataList}]]*/ '';
+    // console.log(message);
+    // for (let messageElement of message) {
+    //     console.log(messageElement);
+    // }
+
+    $("#getApi").click(function (e) {
+        // e.preventDefault();
+        // $.ajax({
+        //     type: "GET",
+        //     url: "/weather",
+        //     data: {},
+        //     success: function (result) {
+        //         alert('ok');
+        //         console.log(result);
+        //     },
+        //     error: function (result) {
+        //         alert('error');
+        //     }
+        // });
+        fetch("/weather", {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'json',
+            },
+            // body: JSON.stringify(data),
+        })
+            .then(response => {
+                response.json()
+            })
+            .then(data => {
+                console.log('Success:', data);
+            });
+    });
+</script>
 <script crossorigin="anonymous"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script crossorigin="anonymous"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>
